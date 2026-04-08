@@ -1,0 +1,25 @@
+{
+  "name": "frontend-usuarios",
+  "version": "1.0.0",
+  "description": "Frontend para registro y listado de usuarios con Bootstrap y Sass",
+  "main": "index.js",
+  "scripts": {
+    "sass:build": "sass scss/styles.scss css/styles.css",
+    "sass:watch": "sass --watch scss/styles.scss css/styles.css",
+    "start": "npm run sass:watch"
+  },
+  "keywords": [
+    "frontend",
+    "bootstrap",
+    "sass",
+    "usuarios"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.97.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  }
+}
