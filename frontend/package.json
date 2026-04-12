@@ -4,8 +4,10 @@
   "description": "Frontend para Cenfo-Tech con SASS y Bootstrap",
   "main": "index.html",
   "scripts": {
-    "sass": "sass scss/index.scss css/index.css --watch",
-    "sass:build": "sass scss/index.scss css/index.css --style=compressed",
+    "sass": "sass scss/index.scss css/index.css scss/home.scss css/home.css --watch",
+    "sass:build": "sass scss/index.scss css/index.css scss/home.scss css/home.css --style=compressed",
+    "sass:home": "sass scss/home.scss css/home.css --watch",
+    "sass:home:build": "sass scss/home.scss css/home.css --style=compressed",
     "start": "npm run sass"
   },
   "keywords": ["cenfotech", "sass", "bootstrap"],
