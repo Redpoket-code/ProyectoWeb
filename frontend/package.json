@@ -4,11 +4,14 @@
   "description": "Frontend para Cenfo-Tech con SASS y Bootstrap",
   "main": "index.html",
   "scripts": {
-    "sass": "sass scss/index.scss css/index.css scss/home.scss css/home.css --watch",
-    "sass:build": "sass scss/index.scss css/index.css scss/home.scss css/home.css --style=compressed",
+    "sass:index": "sass scss/index.scss css/index.css --watch",
     "sass:home": "sass scss/home.scss css/home.css --watch",
-    "sass:home:build": "sass scss/home.scss css/home.css --style=compressed",
-    "start": "npm run sass"
+    "sass:tienda": "sass scss/tienda.scss css/tienda.css --watch",
+    "sass:carrito": "sass scss/carrito.scss css/carrito.css --watch",
+    "sass:admin": "sass scss/admin.scss css/admin.css --watch",
+    "sass:all": "sass scss/index.scss css/index.css --watch & sass scss/home.scss css/home.css --watch & sass scss/tienda.scss css/tienda.css --watch & sass scss/carrito.scss css/carrito.css --watch & sass scss/admin.scss css/admin.css --watch",
+    "sass:build": "sass scss/index.scss css/index.css --style=compressed & sass scss/home.scss css/home.css --style=compressed & sass scss/tienda.scss css/tienda.css --style=compressed & sass scss/carrito.scss css/carrito.css --style=compressed & sass scss/admin.scss css/admin.css --style=compressed",
+    "start": "npm run sass:all"
   },
   "keywords": ["cenfotech", "sass", "bootstrap"],
   "author": "Cenfo-Tech",
