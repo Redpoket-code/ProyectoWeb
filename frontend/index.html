@@ -3,60 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cenfo-Tech</title>
-
-  <!-- Google Fonts -->
+  <title>Cenfo-Tech | Inicio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
-
-  <!-- CSS compilado desde SASS (incluye Bootstrap + tus estilos) -->
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
   <header class="navbar">
     <div class="nav-left">
-      <img src="icons/Cenfo-tech.png" class="logo-mini"/>
+      <img src="icons/Cenfo-tech.png" class="logo-mini" alt="logo"/>
       <span class="brand">CenfoTech</span>
     </div>
-
     <div class="search-box">
       <i data-feather="search"></i>
       <input type="text" placeholder="Search">
     </div>
-
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="index.html" class="active">About</a>
+    </div>
     <div class="nav-icons">
-      <i data-feather="heart"></i>
-      <i data-feather="shopping-cart"></i>
-      <i data-feather="user"></i>
+      <a href="#"><i data-feather="heart"></i></a>
+      <a href="carrito.html"><i data-feather="shopping-cart"></i></a>
+      <a href="#"><i data-feather="user"></i></a>
     </div>
   </header>
 
   <section class="hero">
-    <img src="icons/Cenfo-tech.png" class="hero-logo"/>
+    <img src="icons/Cenfo-tech.png" class="hero-logo" alt="hero"/>
   </section>
 
   <section class="info">
     <div class="left">
       <div class="card">
         <h3>Misión</h3>
-        <p>
-          Brindar soluciones tecnológicas accesibles, confiables y modernas
-          mediante la venta de componentes, accesorios y herramientas digitales.
-        </p>
+        <p>Brindar soluciones tecnológicas accesibles, confiables y modernas mediante la venta de componentes, accesorios y herramientas digitales.</p>
       </div>
-
       <div class="card">
         <h3>Visión</h3>
-        <p>
-          Ser la tienda líder en tecnología en Latinoamérica, reconocida por
-          experiencia de usuario, atención personalizada y compromiso con la innovación.
-        </p>
+        <p>Ser la tienda líder en tecnología en Latinoamérica, reconocida por experiencia de usuario, atención personalizada y compromiso con la innovación.</p>
       </div>
     </div>
-
     <div class="card big">
       <h3>Valores de Cenfo-Tech</h3>
       <ul>
@@ -75,26 +63,15 @@
     <div class="team-grid">
       <div class="member">
         <div class="avatar">J</div>
-        <div>
-          <strong>Juan Vargas</strong>
-          <p>Back-end Developer</p>
-        </div>
+        <div><strong>Juan Vargas</strong><p>Back-end Developer</p></div>
       </div>
-
       <div class="member">
         <div class="avatar">A</div>
-        <div>
-          <strong>Anthony Chavarría</strong>
-          <p>QA Manager</p>
-        </div>
+        <div><strong>Anthony Chavarría</strong><p>QA Manager</p></div>
       </div>
-
       <div class="member">
         <div class="avatar">J</div>
-        <div>
-          <strong>Jose Castro</strong>
-          <p>Front-end Developer</p>
-        </div>
+        <div><strong>Jose Castro</strong><p>Front-end Developer</p></div>
       </div>
     </div>
   </section>
@@ -102,23 +79,19 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <img src="icons/Cenfo-tech.png" class="footer-logo"/>
-        <p>
-          Brindamos soluciones tecnológicas accesibles,
-          confiables y modernas.
-        </p>
+        <img src="icons/Cenfo-tech.png" class="footer-logo" alt="logo"/>
+        <p>Brindamos soluciones tecnológicas accesibles, confiables y modernas.</p>
         <div class="footer-social">
           <i data-feather="twitter"></i>
           <i data-feather="facebook"></i>
           <i data-feather="instagram"></i>
         </div>
       </div>
-
       <div class="footer-menu">
         <h4>Menu</h4>
-        <a href="#">Home</a>
-        <a href="#">Productos</a>
-        <a href="#">Carrito</a>
+        <a href="home.html">Home</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="carrito.html">Carrito</a>
         <a href="#">Mi cuenta</a>
       </div>
     </div>

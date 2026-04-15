@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cenfo-Tech | Tienda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="css/tienda.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="icons/Cenfo-tech.png" class="logo-mini" alt="logo"/>
+      <span class="brand">CenfoTech</span>
+    </div>
+    <div class="search-box">
+      <i data-feather="search"></i>
+      <input type="text" placeholder="Search">
+    </div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="tienda.html" class="active">Tienda</a>
+    </div>
+    <div class="nav-icons">
+      <a href="#"><i data-feather="heart"></i></a>
+      <a href="carrito.html"><i data-feather="shopping-cart"></i></a>
+      <a href="#"><i data-feather="user"></i></a>
+    </div>
+  </header>
+
+  <section class="hero-tienda">
+    <h1>Nuestros Productos</h1>
+    <p>Descubre la mejor tecnología al mejor precio</p>
+  </section>
+
+  <div class="productos-grid" id="productosContainer"></div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="icons/Cenfo-tech.png" class="footer-logo" alt="logo"/>
+        <p>Brindamos soluciones tecnológicas accesibles, confiables y modernas.</p>
+        <div class="footer-social">
+          <i data-feather="twitter"></i>
+          <i data-feather="facebook"></i>
+          <i data-feather="instagram"></i>
+        </div>
+      </div>
+      <div class="footer-menu">
+        <h4>Menu</h4>
+        <a href="home.html">Home</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="carrito.html">Carrito</a>
+        <a href="#">Mi cuenta</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/tienda.js"></script>
+  <script>feather.replace();</script>
+</body>
+</html>
