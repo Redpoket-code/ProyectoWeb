@@ -1,3 +1,6 @@
+const registroForm = document.getElementById("registroForm");
+const loginForm = document.getElementById("loginForm");
+
 // Obtener usuarios guardados
 function obtenerUsuarios() {
   return JSON.parse(localStorage.getItem("usuarios")) || [];
@@ -20,7 +23,7 @@ if (registroForm) {
     const tipo = document.getElementById("regTipo").value;
 
     try {
-      const respuesta = await fetch("http://localhost:3000/api/usuarios", {
+      const respuesta = await fetch("http://localhost:5000/api/usuarios", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -72,7 +75,7 @@ if (loginForm) {
     const password = document.getElementById("loginPassword").value.trim();
 
     try {
-      const respuesta = await fetch("http://localhost:3000/api/usuarios/login", {
+      const respuesta = await fetch("http://localhost:5000/api/usuarios/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
