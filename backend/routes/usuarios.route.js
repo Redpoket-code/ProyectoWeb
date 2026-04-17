@@ -10,6 +10,7 @@ const router = express.Router();
 // REGISTRO
 router.post('/', async (req, res) => {
     try {
+        console.log("REGISTRO REQUEST BODY:", req.body);
         const { nombre, correo, tipoUsuario, password } = req.body;
 
         if (!nombre || !correo || !tipoUsuario || !password) {
@@ -36,6 +37,8 @@ router.post('/', async (req, res) => {
             password: passwordEncriptada
         });
 
+        console.log("Intentando guardar usuario:", usuarioNuevo); 
+
         await usuarioNuevo.save();
 
         res.status(201).json({
@@ -44,6 +47,7 @@ router.post('/', async (req, res) => {
         });
 
     } catch (error) {
+        console.error("REGISTER ERROR:", error);
         res.status(500).json({
             mensaje: 'Error al registrar usuario',
             estado: 'error',
