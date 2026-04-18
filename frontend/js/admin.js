@@ -1,12 +1,43 @@
 const API_URL = 'http://localhost:5000/api/productos';
 let productoEditandoId = null;
 
+// Verificar autenticación y rol
+function verificarAdmin() {
+    const token = localStorage.getItem('token');
+    const usuario = localStorage.getItem('usuario');
+    
+    if (!token || !usuario) {
+        alert('Debes iniciar sesión como administrador');
+        window.location.href = 'login.html';
+        return false;
+    }
+    
+    const usuarioData = JSON.parse(usuario);
+    if (usuarioData.tipoUsuario !== 'admin') {
+        alert('Acceso denegado. Se requieren privilegios de administrador.');
+        window.location.href = 'home.html';
+        return false;
+    }
+    
+    return true;
+}
+
+function obtenerToken() {
+    return localStorage.getItem('token');
+}
+
 async function cargarProductos() {
+    if (!verificarAdmin()) return;
+    
     const listaContainer = document.getElementById('productosLista');
     listaContainer.innerHTML = '<div class="cargando"><i data-feather="loader"></i><p>Cargando productos...</p></div>';
     
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL, {
+            headers: {
+                'Authorization': `Bearer ${obtenerToken()}`
+            }
+        });
         const productos = await response.json();
         
         if (productos.length === 0) {
@@ -54,7 +85,10 @@ async function cargarProductos() {
                 if (confirm('¿Estás seguro de eliminar este producto?')) {
                     try {
                         const response = await fetch(`${API_URL}/${btn.dataset.id}`, {
-                            method: 'DELETE'
+                            method: 'DELETE',
+                            headers: {
+                                'Authorization': `Bearer ${obtenerToken()}`
+                            }
                         });
                         if (response.ok) {
                             alert('Producto eliminado correctamente');
@@ -95,7 +129,10 @@ async function agregarProducto(event) {
     try {
         const response = await fetch(API_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${obtenerToken()}`
+            },
             body: JSON.stringify(nuevoProducto)
         });
         
@@ -129,7 +166,10 @@ async function guardarEdicion() {
     try {
         const response = await fetch(`${API_URL}/${productoEditandoId}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${obtenerToken()}`
+            },
             body: JSON.stringify(productoActualizado)
         });
         
@@ -153,14 +193,16 @@ function cerrarModal() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    cargarProductos();
-    document.getElementById('formAgregar').addEventListener('submit', agregarProducto);
-    document.getElementById('btnCerrarModal').addEventListener('click', cerrarModal);
-    document.getElementById('btnGuardarEdit').addEventListener('click', guardarEdicion);
-    
-    document.getElementById('modalEditar').addEventListener('click', (e) => {
-        if (e.target === document.getElementById('modalEditar')) {
-            cerrarModal();
-        }
-    });
+    if (verificarAdmin()) {
+        cargarProductos();
+        document.getElementById('formAgregar').addEventListener('submit', agregarProducto);
+        document.getElementById('btnCerrarModal').addEventListener('click', cerrarModal);
+        document.getElementById('btnGuardarEdit').addEventListener('click', guardarEdicion);
+        
+        document.getElementById('modalEditar').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('modalEditar')) {
+                cerrarModal();
+            }
+        });
+    }
 });

@@ -19,6 +19,7 @@ body {
   color: $text-color;
 }
 
+/* ================= NAVBAR ================= */
 .navbar {
   height: 70px;
   background: $navbar-bg;
@@ -34,6 +35,18 @@ body {
   gap: 10px;
 }
 
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
 .logo-mini {
   height: 40px;
   width: auto;
@@ -42,22 +55,6 @@ body {
 
 .brand {
   font-weight: 600;
-}
-
-.search-box {
-  background: #fff;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 20px;
-  width: 320px;
-}
-
-.search-box input {
-  border: none;
-  outline: none;
-  width: 100%;
 }
 
 .nav-links {
@@ -70,23 +67,47 @@ body {
   font-weight: 500;
   color: #333;
   text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #000;
+  }
+
+  &.active {
+    font-weight: 600;
+    color: #000;
+  }
 }
 
-.nav-links a.active {
-  font-weight: 600;
-  color: #000;
-}
-
-.nav-icons {
-  display: flex;
-  gap: 20px;
-  cursor: pointer;
-}
-
-.nav-icons a {
+.nav-icon-link {
   color: #333;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+
+  &:hover {
+    color: #000;
+  }
+
+  &:visited {
+    color: #333;
+  }
+
+  &.active {
+    font-weight: 600;
+    color: #000;
+  }
+
+  i, svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+  }
 }
 
+/* ================= HERO CARRITO ================= */
 .hero-carrito {
   background: linear-gradient(135deg, #e9eaec 0%, #d1d3d8 100%);
   padding: 40px 20px;
@@ -107,6 +128,7 @@ body {
   margin: 0 auto;
 }
 
+/* ================= CONTENEDOR CARRITO ================= */
 .carrito-container {
   max-width: 1200px;
   margin: 60px auto;
@@ -128,6 +150,7 @@ body {
   font-size: 24px;
 }
 
+/* ================= ITEM DEL CARRITO ================= */
 .carrito-item {
   display: flex;
   gap: 20px;
@@ -172,18 +195,25 @@ body {
   background: white;
   cursor: pointer;
   font-weight: bold;
-}
+  transition: all 0.2s;
 
-.carrito-item-cantidad button:hover {
-  background: #f0f1f5;
+  &:hover {
+    background: #f0f1f5;
+  }
 }
 
 .carrito-item-eliminar {
   color: #ff6b6b;
   cursor: pointer;
   margin-left: 20px;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #ee5a5a;
+  }
 }
 
+/* ================= RESUMEN ================= */
 .carrito-resumen {
   background: white;
   border-radius: 16px;
@@ -225,19 +255,155 @@ body {
   cursor: pointer;
   margin-top: 20px;
   transition: background 0.3s;
+
+  &:hover {
+    background: $primary-color;
+    color: #000;
+  }
 }
 
-.btn-checkout:hover {
-  background: $primary-color;
-  color: #000;
-}
-
+/* ================= CARRITO VACIO ================= */
 .carrito-vacio {
   text-align: center;
   padding: 60px;
   color: #888;
 }
 
+.carrito-vacio i {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 16px;
+  color: #ccc;
+}
+
+.carrito-vacio a {
+  display: inline-block;
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+/* ================= MODAL PAGO ================= */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  padding: 30px;
+  position: relative;
+  animation: modalIn 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f0f0f0;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  color: #333;
+  transition: background 0.2s;
+  font-size: 18px;
+
+  &:hover {
+    background: #ddd;
+  }
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+
+  &:focus {
+    border-color: $primary-color;
+  }
+}
+
+.btn-guardar {
+  width: 100%;
+  background: #000;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 40px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  &:hover {
+    background: $primary-color;
+    color: #000;
+  }
+}
+
+/* ================= FOOTER ================= */
 .footer {
   background: $footer-bg;
   color: #fff;
@@ -269,7 +435,15 @@ body {
 .footer-social {
   display: flex;
   gap: 18px;
-  cursor: pointer;
+
+  a {
+    color: $footer-text;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 .footer-menu {
@@ -287,32 +461,63 @@ body {
   text-decoration: none;
   font-size: 14px;
   transition: 0.2s;
+
+  &:hover {
+    color: #fff;
+  }
 }
 
-.footer-menu a:hover {
-  color: #fff;
-}
-
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
   .navbar {
     padding: 0 20px;
   }
-  .search-box {
+
+  .nav-center {
     display: none;
   }
+
+  .nav-right {
+    display: none;
+  }
+
   .carrito-container {
     grid-template-columns: 1fr;
   }
+
   .carrito-item {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
+
   .carrito-item-cantidad {
     justify-content: center;
   }
+
   .footer-container {
     grid-template-columns: 1fr;
     gap: 40px;
+    text-align: center;
+  }
+
+  .footer-brand p {
+    max-width: 100%;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-menu {
+    align-items: center;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-content h3 {
+    font-size: 20px;
   }
 }

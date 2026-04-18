@@ -6,27 +6,34 @@
   <title>Cenfo-Tech | Carrito</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="css/carrito.css">
 </head>
 <body>
 
   <header class="navbar">
     <div class="nav-left">
-      <img src="icons/Cenfo-tech.png" class="logo-mini" alt="logo"/>
+      <a href="home.html">
+        <img src="icons/Cenfo-tech.png" class="logo-mini" alt="logo"/>
+      </a>
       <span class="brand">CenfoTech</span>
     </div>
-    <div class="search-box">
-      <i data-feather="search"></i>
-      <input type="text" placeholder="Search">
+
+    <div class="nav-center">
+      <nav class="nav-links">
+        <a href="home.html">Inicio</a>
+        <a href="index.html">About</a>
+      </nav>
     </div>
-    <div class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="tienda.html">Tienda</a>
-    </div>
-    <div class="nav-icons">
-      <a href="#"><i data-feather="heart"></i></a>
-      <a href="carrito.html" class="active"><i data-feather="shopping-cart"></i></a>
-      <a href="#"><i data-feather="user"></i></a>
+
+    <div class="nav-right">
+      <a href="carrito.html" class="nav-icon-link active">
+        <i data-feather="shopping-cart"></i>
+      </a>
+      <a href="#" class="nav-icon-link" id="btnUsuario">
+        <i data-feather="user"></i>
+        <span id="usuarioNombre"></span>
+      </a>
     </div>
   </header>
 
@@ -59,10 +66,10 @@
       </div>
       <div class="footer-menu">
         <h4>Menu</h4>
-        <a href="home.html">Home</a>
-        <a href="tienda.html">Tienda</a>
+        <a href="home.html">Inicio</a>
+        <a href="index.html">About</a>
         <a href="carrito.html">Carrito</a>
-        <a href="#">Mi cuenta</a>
+        <a href="login.html">Mi cuenta</a>
       </div>
     </div>
   </footer>

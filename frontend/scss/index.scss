@@ -19,6 +19,7 @@ body {
   color: $text-color;
 }
 
+/* ================= NAVBAR ================= */
 .navbar {
   height: 70px;
   background: $navbar-bg;
@@ -34,6 +35,18 @@ body {
   gap: 10px;
 }
 
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
 .logo-mini {
   height: 40px;
   width: auto;
@@ -44,32 +57,42 @@ body {
   font-weight: 600;
 }
 
-.search-box {
-  background: #fff;
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #000;
+  }
+
+  &.active {
+    font-weight: 600;
+    color: #000;
+  }
+}
+
+.nav-icon-link {
+  color: #333;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 20px;
-  width: 320px;
-}
-
-.search-box input {
-  border: none;
-  outline: none;
-  width: 100%;
-}
-
-.nav-icons {
-  display: flex;
-  gap: 20px;
   cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+
+  &:hover {
+    color: #000;
+  }
 }
 
-.nav-icons a {
-  color: #333;
-}
-
+/* ================= HERO ================= */
 .hero {
   text-align: center;
   padding: 50px 0 20px;
@@ -82,6 +105,7 @@ body {
   object-fit: contain;
 }
 
+/* ================= INFO ================= */
 .info {
   max-width: 1200px;
   margin: 40px auto;
@@ -123,6 +147,7 @@ body {
   padding-left: 18px;
 }
 
+/* ================= TEAM ================= */
 .team {
   text-align: center;
   margin: 60px 0;
@@ -157,6 +182,7 @@ body {
   font-weight: 600;
 }
 
+/* ================= FOOTER ================= */
 .footer {
   background: $footer-bg;
   color: #fff;
@@ -191,6 +217,15 @@ body {
   cursor: pointer;
 }
 
+.footer-social a {
+  color: $footer-text;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
 .footer-menu {
   display: flex;
   flex-direction: column;
@@ -212,22 +247,48 @@ body {
   color: #fff;
 }
 
+/* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .nav-center {
+    display: none;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
   .info {
     grid-template-columns: 1fr;
   }
+
   .team-grid {
     flex-direction: column;
     align-items: center;
   }
-  .search-box {
-    display: none;
-  }
+
   .big ul {
     grid-template-columns: 1fr;
   }
+
   .footer-container {
     grid-template-columns: 1fr;
     gap: 40px;
+    text-align: center;
+  }
+
+  .footer-brand p {
+    max-width: 100%;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-menu {
+    align-items: center;
   }
 }

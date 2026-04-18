@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cenfo-Tech | Home</title>
+  <title>Cenfo-Tech | Inicio</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,10 @@
   <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
 
-  <!-- CSS compilado desde SASS (incluye Bootstrap + estilos) -->
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- CSS compilado desde SASS -->
   <link rel="stylesheet" href="css/home.css">
 </head>
 
@@ -26,20 +29,20 @@
       </a>
     </div>
 
-    <div class="search-box">
-      <i data-feather="search"></i>
-      <input type="text" placeholder="Search" id="searchInput">
+    <div class="nav-center">
+      <nav class="nav-links">
+        <a href="home.html" class="nav-link active">Inicio</a>
+        <a href="index.html" class="nav-link">About</a>
+      </nav>
     </div>
 
-    <nav class="nav-links">
-      <a href="home.html" class="nav-link active">Home</a>
-      <a href="index.html" class="nav-link">About</a>
-    </nav>
-
-    <div class="nav-icons">
-      <a href="#" class="nav-icon-link" id="btnFavoritos"><i data-feather="heart"></i></a>
-      <a href="#" class="nav-icon-link" id="btnCarrito"><i data-feather="shopping-cart"></i></a>
-      <a href="#" class="nav-icon-link" id="btnUsuario"><i data-feather="user"></i></a>
+    <div class="nav-right">
+      <a href="carrito.html" class="nav-icon-link" id="btnCarrito">
+        <i data-feather="shopping-cart"></i>
+      </a>
+      <a href="#" class="nav-icon-link" id="btnUsuario">
+        <i data-feather="user"></i>
+      </a>
     </div>
 
     <!-- Hamburguesa para mobile -->
@@ -51,13 +54,12 @@
   <!-- Menu mobile -->
   <div class="mobile-menu" id="mobileMenu">
     <nav class="mobile-nav">
-      <a href="home.html" class="mobile-link active">Home</a>
+      <a href="home.html" class="mobile-link active">Inicio</a>
       <a href="index.html" class="mobile-link">About</a>
     </nav>
     <div class="mobile-icons">
-      <a href="#" class="nav-icon-link"><i data-feather="heart"></i></a>
-      <a href="#" class="nav-icon-link"><i data-feather="shopping-cart"></i></a>
-      <a href="#" class="nav-icon-link"><i data-feather="user"></i></a>
+      <a href="carrito.html" class="nav-icon-link"><i data-feather="shopping-cart"></i></a>
+      <a href="#" class="nav-icon-link" id="mobileBtnUsuario"><i data-feather="user"></i></a>
     </div>
   </div>
 
@@ -77,7 +79,8 @@
   <!-- ================= TABS DE CATEGORIAS (mobile) ================= -->
   <section class="product-tabs" id="productos">
     <div class="tabs-container">
-      <button class="tab-btn active" data-tab="new">New Arrival</button>
+      <button class="tab-btn active" data-tab="all">Todos</button>
+      <button class="tab-btn" data-tab="new">New Arrival</button>
       <button class="tab-btn" data-tab="best">Bestseller</button>
       <button class="tab-btn" data-tab="featured">Featured Products</button>
     </div>
@@ -85,129 +88,34 @@
 
   <!-- ================= PRODUCTOS ================= -->
   <section class="products-section">
-    <div class="products-grid" id="productsGrid">
-
-      <!-- Producto 1 -->
-      <div class="product-card" data-category="new">
-        <div class="product-img-container">
-          <button class="btn-wishlist" aria-label="Agregar a favoritos"><i data-feather="heart"></i></button>
-          <img src="https://pngimg.com/d/iphone_14_PNG28.png" alt="Apple iPhone 14 Pro" class="product-img">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Apple iPhone 14 Pro 512GB Gold (MQ233)</h3>
-          <p class="product-price">$1437</p>
-          <button class="btn-add-cart">Comprar</button>
-        </div>
-      </div>
-
-      <!-- Producto 2 -->
-      <div class="product-card" data-category="new">
-        <div class="product-img-container">
-          <button class="btn-wishlist" aria-label="Agregar a favoritos"><i data-feather="heart"></i></button>
-          <img src="https://pngimg.com/d/headphones_PNG101981.png" alt="AirPods Max" class="product-img">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">AirPods Max Silver Starlight Aluminium</h3>
-          <p class="product-price">$549</p>
-          <button class="btn-add-cart">Comprar</button>
-        </div>
-      </div>
-
-      <!-- Producto 3 -->
-      <div class="product-card" data-category="best">
-        <div class="product-img-container">
-          <button class="btn-wishlist" aria-label="Agregar a favoritos"><i data-feather="heart"></i></button>
-          <img src="https://pngimg.com/d/watches_PNG9906.png" alt="Apple Watch" class="product-img">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Apple Watch Series 9 GPS 41mm Starlight Aluminium</h3>
-          <p class="product-price">$399</p>
-          <button class="btn-add-cart">Comprar</button>
-        </div>
-      </div>
-
-      <!-- Producto 4 -->
-      <div class="product-card" data-category="best">
-        <div class="product-img-container">
-          <button class="btn-wishlist" aria-label="Agregar a favoritos"><i data-feather="heart"></i></button>
-          <img src="https://pngimg.com/d/iphone_14_PNG18.png" alt="Apple iPhone 14 Pro 1TB" class="product-img">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Apple iPhone 14 Pro 1TB Gold (MQ2V3)</h3>
-          <p class="product-price">$1499</p>
-          <button class="btn-add-cart">Comprar</button>
-        </div>
-      </div>
-
-      <!-- Producto 5 -->
-      <div class="product-card" data-category="featured">
-        <div class="product-img-container">
-          <button class="btn-wishlist" aria-label="Agregar a favoritos"><i data-feather="heart"></i></button>
-          <img src="https://pngimg.com/d/watches_PNG9879.png" alt="Samsung Galaxy" class="product-img">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Samsung Galaxy Watch6 Classic</h3>
-          <p class="product-price">$369</p>
-          <button class="btn-add-cart">Comprar</button>
-        </div>
-      </div>
-
-      <!-- Producto 6 -->
-      <div class="product-card" data-category="featured">
-        <div class="product-img-container">
-          <button class="btn-wishlist" aria-label="Agregar a favoritos"><i data-feather="heart"></i></button>
-          <img src="https://pngimg.com/d/ipad_PNG12057.png" alt="iPad Air" class="product-img">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Apple iPad Air 10.9" 64GB Wi-Fi Silver</h3>
-          <p class="product-price">$398</p>
-          <button class="btn-add-cart">Comprar</button>
-        </div>
-      </div>
-
-      <!-- Producto 7 -->
-      <div class="product-card" data-category="new">
-        <div class="product-img-container">
-          <button class="btn-wishlist" aria-label="Agregar a favoritos"><i data-feather="heart"></i></button>
-          <img src="https://pngimg.com/d/headphones_PNG101971.png" alt="Galaxy Buds" class="product-img">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Galaxy Buds FE Graphite</h3>
-          <p class="product-price">$99.99</p>
-          <button class="btn-add-cart">Comprar</button>
-        </div>
-      </div>
-
-      <!-- Producto 8 -->
-      <div class="product-card" data-category="best">
-        <div class="product-img-container">
-          <button class="btn-wishlist" aria-label="Agregar a favoritos"><i data-feather="heart"></i></button>
-          <img src="https://pngimg.com/d/iphone_14_PNG42.png" alt="iPhone 16 Pro" class="product-img">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Apple iPhone 16 Pro 256GB Natural Titanium</h3>
-          <p class="product-price">$1199</p>
-          <button class="btn-add-cart">Comprar</button>
-        </div>
-      </div>
-
-    </div>
+    <div class="products-grid" id="productsGrid"></div>
   </section>
 
   <!-- ================= PAGINACION ================= -->
-  <nav class="pagination" id="pagination">
-    <button class="page-btn prev" id="btnPrev" aria-label="Anterior">
-      <i data-feather="chevron-left"></i>
-    </button>
-    <button class="page-btn active" data-page="1">1</button>
-    <button class="page-btn" data-page="2">2</button>
-    <button class="page-btn" data-page="3">3</button>
-    <span class="page-dots">…</span>
-    <button class="page-btn" data-page="12">12</button>
-    <button class="page-btn next" id="btnNext" aria-label="Siguiente">
-      <i data-feather="chevron-right"></i>
-    </button>
-  </nav>
+  <nav class="pagination" id="pagination"></nav>
+
+  <!-- ================= MODAL PRODUCTO ================= -->
+  <div class="modal-overlay" id="modalProducto">
+    <div class="modal-product">
+      <button class="modal-close" id="modalClose">✖</button>
+      <div class="modal-body">
+        <div class="modal-img-container">
+          <img src="" alt="Producto" class="modal-img" id="modalImg">
+        </div>
+        <div class="modal-info">
+          <span class="modal-category">Producto Destacado</span>
+          <h2 class="modal-name" id="modalName"></h2>
+          <p class="modal-desc" id="modalDesc"></p>
+          <div class="modal-price" id="modalPrice"></div>
+          <div class="modal-actions">
+            <button class="btn-modal-cart" id="modalAddCart">
+              <i data-feather="shopping-cart"></i> Agregar al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ================= FOOTER ================= -->
   <footer class="footer">
@@ -228,119 +136,17 @@
 
       <div class="footer-menu">
         <h4>Menu</h4>
-        <a href="home.html">Home</a>
-        <a href="#">Productos</a>
-        <a href="#">Carrito</a>
-        <a href="#">Mi cuenta</a>
+        <a href="home.html">Inicio</a>
+        <a href="index.html">About</a>
+        <a href="carrito.html">Carrito</a>
+        <a href="login.html">Mi cuenta</a>
       </div>
     </div>
   </footer>
 
-  <!-- ================= JAVASCRIPT ================= -->
+  <script src="js/home.js"></script>
   <script>
-    // Inicializar iconos Feather
     feather.replace();
-
-    // ---- MENU HAMBURGUESA ----
-    var btnHamburger = document.getElementById('btnHamburger');
-    var mobileMenu = document.getElementById('mobileMenu');
-
-    btnHamburger.addEventListener('click', function () {
-      mobileMenu.classList.toggle('open');
-      // Cambiar icono entre menu y X
-      var icon = btnHamburger.querySelector('svg');
-      if (mobileMenu.classList.contains('open')) {
-        btnHamburger.innerHTML = '<i data-feather="x"></i>';
-      } else {
-        btnHamburger.innerHTML = '<i data-feather="menu"></i>';
-      }
-      feather.replace();
-    });
-
-    // ---- TABS DE CATEGORIAS ----
-    var tabBtns = document.querySelectorAll('.tab-btn');
-    var productCards = document.querySelectorAll('.product-card');
-
-    tabBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        // Quitar active de todos los tabs
-        tabBtns.forEach(function (b) { b.classList.remove('active'); });
-        // Agregar active al tab clickeado
-        btn.classList.add('active');
-
-        var category = btn.getAttribute('data-tab');
-
-        // Mostrar/ocultar productos segun categoria
-        productCards.forEach(function (card) {
-          var cardCategory = card.getAttribute('data-category');
-          if (category === 'new') {
-            // En "New Arrival" mostramos todos
-            card.style.display = 'block';
-          } else if (cardCategory === category) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // ---- PAGINACION ----
-    var pageBtns = document.querySelectorAll('.page-btn[data-page]');
-
-    pageBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        // Quitar active de todos los botones de pagina
-        pageBtns.forEach(function (b) { b.classList.remove('active'); });
-        // Agregar active al boton clickeado
-        btn.classList.add('active');
-        // Aqui se conectara con la BD para cargar los productos de la pagina
-        console.log('Pagina seleccionada: ' + btn.getAttribute('data-page'));
-      });
-    });
-
-    // ---- WISHLIST (FAVORITOS) ----
-    var wishlistBtns = document.querySelectorAll('.btn-wishlist');
-
-    wishlistBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        btn.classList.toggle('liked');
-        // Aqui se conectara con la BD para guardar/quitar de favoritos
-        if (btn.classList.contains('liked')) {
-          console.log('Producto agregado a favoritos');
-        } else {
-          console.log('Producto quitado de favoritos');
-        }
-      });
-    });
-
-    // ---- BUSQUEDA ----
-    var searchInput = document.getElementById('searchInput');
-
-    searchInput.addEventListener('input', function () {
-      var query = searchInput.value.toLowerCase();
-
-      productCards.forEach(function (card) {
-        var name = card.querySelector('.product-name').textContent.toLowerCase();
-        if (name.includes(query)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-
-    // ---- BOTON COMPRAR ----
-    var addCartBtns = document.querySelectorAll('.btn-add-cart');
-
-    addCartBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var productName = btn.closest('.product-card').querySelector('.product-name').textContent;
-        // Aqui se conectara con la BD para agregar al carrito
-        alert('Producto agregado al carrito: ' + productName);
-        console.log('Agregado al carrito: ' + productName);
-      });
-    });
   </script>
 </body>
 

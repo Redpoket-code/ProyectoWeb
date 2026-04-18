@@ -19,6 +19,7 @@ body {
   color: $text-color;
 }
 
+/* ================= NAVBAR ================= */
 .navbar {
   height: 70px;
   background: $navbar-bg;
@@ -34,6 +35,18 @@ body {
   gap: 10px;
 }
 
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
 .logo-mini {
   height: 40px;
   width: auto;
@@ -42,22 +55,6 @@ body {
 
 .brand {
   font-weight: 600;
-}
-
-.search-box {
-  background: #fff;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 20px;
-  width: 320px;
-}
-
-.search-box input {
-  border: none;
-  outline: none;
-  width: 100%;
 }
 
 .nav-links {
@@ -70,23 +67,32 @@ body {
   font-weight: 500;
   color: #333;
   text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #000;
+  }
+
+  &.active {
+    font-weight: 600;
+    color: #000;
+  }
 }
 
-.nav-links a.active {
-  font-weight: 600;
-  color: #000;
-}
-
-.nav-icons {
-  display: flex;
-  gap: 20px;
-  cursor: pointer;
-}
-
-.nav-icons a {
+.nav-icon-link {
   color: #333;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+
+  &:hover {
+    color: #000;
+  }
 }
 
+/* ================= HERO ADMIN ================= */
 .hero-admin {
   background: linear-gradient(135deg, #e9eaec 0%, #d1d3d8 100%);
   padding: 40px 20px;
@@ -107,6 +113,7 @@ body {
   margin: 0 auto;
 }
 
+/* ================= ADMIN CONTAINER ================= */
 .admin-container {
   max-width: 1200px;
   margin: 60px auto;
@@ -128,6 +135,7 @@ body {
   font-size: 24px;
 }
 
+/* ================= ADMIN ITEM ================= */
 .admin-item {
   display: flex;
   align-items: center;
@@ -170,11 +178,11 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s;
-}
 
-.btn-modificar:hover {
-  background: $primary-color;
-  color: #000;
+  &:hover {
+    background: $primary-color;
+    color: #000;
+  }
 }
 
 .btn-eliminar {
@@ -186,12 +194,13 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s;
+
+  &:hover {
+    background: #ee5a5a;
+  }
 }
 
-.btn-eliminar:hover {
-  background: #ee5a5a;
-}
-
+/* ================= FORMULARIO PRODUCTO ================= */
 .form-producto {
   background: white;
   border-radius: 16px;
@@ -225,11 +234,10 @@ body {
   font-size: 14px;
   outline: none;
   transition: border 0.2s;
-}
 
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: $primary-color;
+  &:focus {
+    border-color: $primary-color;
+  }
 }
 
 .form-group textarea {
@@ -248,13 +256,14 @@ body {
   cursor: pointer;
   transition: background 0.3s;
   margin-top: 8px;
+
+  &:hover {
+    background: $primary-color;
+    color: #000;
+  }
 }
 
-.btn-agregar:hover {
-  background: $primary-color;
-  color: #000;
-}
-
+/* ================= MODAL EDITAR ================= */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -268,10 +277,10 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px;
-}
 
-.modal-overlay.active {
-  display: flex;
+  &.active {
+    display: flex;
+  }
 }
 
 .modal-content {
@@ -310,10 +319,10 @@ body {
   cursor: pointer;
   font-size: 20px;
   color: #999;
-}
 
-.modal-close:hover {
-  background: #f0f0f0;
+  &:hover {
+    background: #f0f0f0;
+  }
 }
 
 .modal-content h3 {
@@ -335,13 +344,14 @@ body {
   font-weight: 600;
   cursor: pointer;
   margin-top: 8px;
+
+  &:hover {
+    background: $primary-color;
+    color: #000;
+  }
 }
 
-.btn-guardar:hover {
-  background: $primary-color;
-  color: #000;
-}
-
+/* ================= FOOTER ================= */
 .footer {
   background: $footer-bg;
   color: #fff;
@@ -373,14 +383,15 @@ body {
 .footer-social {
   display: flex;
   gap: 18px;
-}
 
-.footer-social a {
-  color: $footer-text;
-}
+  a {
+    color: $footer-text;
+    transition: color 0.2s;
 
-.footer-social a:hover {
-  color: #fff;
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 .footer-menu {
@@ -398,10 +409,10 @@ body {
   text-decoration: none;
   font-size: 14px;
   transition: 0.2s;
-}
 
-.footer-menu a:hover {
-  color: #fff;
+  &:hover {
+    color: #fff;
+  }
 }
 
 .cargando {
@@ -416,34 +427,47 @@ body {
   color: red;
 }
 
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
   .navbar {
     padding: 0 20px;
   }
-  .search-box {
+
+  .nav-center {
     display: none;
   }
+
+  .nav-right {
+    display: none;
+  }
+
   .admin-container {
     grid-template-columns: 1fr;
   }
+
   .admin-item {
     flex-direction: column;
     text-align: center;
   }
+
   .admin-item-acciones {
     justify-content: center;
   }
+
   .footer-container {
     grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
   }
+
   .footer-brand p {
     max-width: 100%;
   }
+
   .footer-social {
     justify-content: center;
   }
+
   .footer-menu {
     align-items: center;
   }

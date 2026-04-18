@@ -3,30 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cenfo-Tech | Inicio</title>
+  <title>Cenfo-Tech | About</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
   <header class="navbar">
     <div class="nav-left">
-      <img src="icons/Cenfo-tech.png" class="logo-mini" alt="logo"/>
+      <a href="home.html">
+        <img src="icons/Cenfo-tech.png" class="logo-mini" alt="logo"/>
+      </a>
       <span class="brand">CenfoTech</span>
     </div>
-    <div class="search-box">
-      <i data-feather="search"></i>
-      <input type="text" placeholder="Search">
+
+    <div class="nav-center">
+      <nav class="nav-links">
+        <a href="home.html">Inicio</a>
+        <a href="index.html" class="active">About</a>
+      </nav>
     </div>
-    <div class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="index.html" class="active">About</a>
-    </div>
-    <div class="nav-icons">
-      <a href="#"><i data-feather="heart"></i></a>
-      <a href="carrito.html"><i data-feather="shopping-cart"></i></a>
-      <a href="#"><i data-feather="user"></i></a>
+
+    <div class="nav-right">
+      <a href="carrito.html" class="nav-icon-link">
+        <i data-feather="shopping-cart"></i>
+      </a>
+      <a href="#" class="nav-icon-link" id="btnUsuario">
+        <i data-feather="user"></i>
+        <span id="usuarioNombre"></span>
+      </a>
     </div>
   </header>
 
@@ -89,16 +96,52 @@
       </div>
       <div class="footer-menu">
         <h4>Menu</h4>
-        <a href="home.html">Home</a>
-        <a href="tienda.html">Tienda</a>
+        <a href="home.html">Inicio</a>
+        <a href="index.html">About</a>
         <a href="carrito.html">Carrito</a>
-        <a href="#">Mi cuenta</a>
+        <a href="login.html">Mi cuenta</a>
       </div>
     </div>
   </footer>
 
   <script>
     feather.replace();
+    
+    // Funcionalidad de usuario y cerrar sesión
+    const usuario = localStorage.getItem('usuario');
+    const btnUsuario = document.getElementById('btnUsuario');
+    const usuarioNombreSpan = document.getElementById('usuarioNombre');
+    
+    if (usuario && btnUsuario) {
+      const usuarioData = JSON.parse(usuario);
+      if (usuarioNombreSpan) {
+        usuarioNombreSpan.textContent = usuarioData.nombre.split(' ')[0];
+      }
+      btnUsuario.href = "#";
+      
+      btnUsuario.addEventListener('click', (e) => {
+        e.preventDefault();
+        Swal.fire({
+          title: "Cerrar sesión",
+          text: "¿Estás seguro que deseas cerrar sesión?",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonText: "Sí, salir",
+          cancelButtonText: "Cancelar"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('usuario');
+            window.location.href = 'login.html';
+          }
+        });
+      });
+    } else if (btnUsuario) {
+      if (usuarioNombreSpan) {
+        usuarioNombreSpan.textContent = '';
+      }
+      btnUsuario.href = "login.html";
+    }
   </script>
 </body>
 </html>
