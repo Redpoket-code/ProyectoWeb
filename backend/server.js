@@ -1,7 +1,20 @@
+const dns = require('dns');
+
+dns.setServers([
+    '8.8.8.8',
+    '8.8.4.4'
+]);
+
+dns.setDefaultResultOrder('ipv4first');
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+const dotenvResult = require('dotenv').config({ path: './.env' });
+
+console.log("Dotenv result:", dotenvResult);
+console.log("Mongo URI:", process.env.MONGODB_URI);
 
 // Importar modelos y rutas
 const Producto = require('./models/Producto');

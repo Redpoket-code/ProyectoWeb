@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Productos",
+    "url": "/api/productos"
+  },
+  {
+    "name": "Producto Hero",
+    "url": "/api/productos/hero"
+  },
+  {
+    "name": "Usuarios",
+    "url": "/api/usuarios"
+  },
+  {
+    "name": "Imágenes Externas",
+    "url": "/api/external/images"
+  },
+  {
+    "name": "Tipo de Cambio",
+    "url": "/api/exchange/usd"
+  }
+]
