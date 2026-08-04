@@ -10,7 +10,9 @@ on:
     branches:
       - main
 
+
 jobs:
+
   backend-tests:
 
     runs-on: ubuntu-latest
@@ -19,18 +21,44 @@ jobs:
       run:
         working-directory: backend
 
+
     steps:
 
+      # Descargar código
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
+
+      # Configurar Node
       - name: Instalar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
+
+      # Instalar dependencias
       - name: Instalar dependencias
         run: npm install
 
+
+      # Ejecutar Jest
       - name: Ejecutar pruebas unitarias
         run: npm test
+
+
+      # Levantar API
+      - name: Levantar backend
+        run: |
+          npm start &
+          sleep 10
+          
+          
+      # Instalar k6
+      - name: Instalar k6
+        uses: grafana/setup-k6-action@v1
+
+
+      # Ejecutar pruebas API
+      - name: Ejecutar pruebas API con k6
+        run: |
+          k6 run performance/performance-test.js

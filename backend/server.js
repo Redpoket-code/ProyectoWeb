@@ -75,18 +75,4 @@ app.get('/api/exchange/usd', async (req, res) => {
     }
 });
 
-// Producto para hero banner
-app.get('/api/productos/hero', async (req, res) => {
-    try {
-        const heroProductId = "69e2bfdc9690651965f96eca";
-        const producto = await Producto.findOne({ _id: heroProductId });
-        if (!producto) {
-            return res.status(404).json({ message: 'Producto no encontrado' });
-        }
-        res.json(producto);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
-
 app.listen(PORT, () => console.log(`🚀 Servidor en http://localhost:${PORT}`));

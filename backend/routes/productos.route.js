@@ -12,14 +12,23 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Obtener un producto por ID
-router.get('/:id', async (req, res) => {
+// Obtener producto para Hero Banner
+router.get('/hero', async (req, res) => {
     try {
-        const producto = await Producto.findById(req.params.id).populate('categoriaId');
-        if (!producto) return res.status(404).json({ message: 'Producto no encontrado' });
+        const producto = await Producto.findOne().populate('categoriaId');
+
+        if (!producto) {
+            return res.status(404).json({
+                message: 'No hay productos registrados'
+            });
+        }
+
         res.json(producto);
+
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({
+            message: error.message
+        });
     }
 });
 
@@ -28,6 +37,17 @@ router.get('/categoria/:categoriaId', async (req, res) => {
     try {
         const productos = await Producto.find({ categoriaId: req.params.categoriaId });
         res.json(productos);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Obtener un producto por ID
+router.get('/:id', async (req, res) => {
+    try {
+        const producto = await Producto.findById(req.params.id).populate('categoriaId');
+        if (!producto) return res.status(404).json({ message: 'Producto no encontrado' });
+        res.json(producto);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
